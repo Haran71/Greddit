@@ -1,0 +1,43 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --primary: #e4eef1;
+    --secondary: #2b3452;
+}
+
+body {
+    padding: 0 16px;
+}
+
+header nav {
+    display: flex;
+    gap: 16px;
+    justify-content: end;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+header nav h1 {
+    margin-right: auto;
+    border-bottom: 3px solid var(--primary);
+}
+header nav a{
+    text-decoration: none;
+    padding: 6px;
+    border-radius: 4px;
+}
+/* header nav a.active {
+    background: var(--primary);
+} */
+
+.HideDiv{
+    display: none;
+}
+
+.errorText {
+    color:firebrick;
+    margin-top: 4px;
+}
+
