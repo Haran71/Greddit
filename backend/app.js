@@ -78,7 +78,16 @@ app.use(passport.session());
   
 const saltRounds = 10;
 
-mongoose.connect("mongodb://127.0.0.1:27017/GredditDB");
+mongoose.connect(process.env.MONGO_URI)
+  .then(() => {
+    console.log('connected to database')
+    // listen to port
+  })
+  .catch((err) => {
+    console.log(err)
+  }) 
+
+// mongoose.connect("mongodb://host.docker.internal:27017/GredditDB");
 
 const omit = (obj, ...keys) => Object.fromEntries(
     Object.entries(obj)
@@ -495,6 +504,7 @@ app.post("/updateRequests",authenticateToken1,(req,res) =>{
 // for my subgreddits reports
 
 app.post("/deleteReportedPost",authenticateToken1,(req,res) =>{
+    console.log(req.body);
     Post.findById(req.body.report.post_id,(err,post) =>{
         User.findOne({username:post.owner},(err,user) =>{
             for(sg of user.sgList){
@@ -920,7 +930,19 @@ app.post("/getStats",authenticateToken1,(req,res) => {
     })
 });
 
-
+app.post("/unsave",authenticateToken1,(req,res) =>{
+    User.findOne({username:req.body.username}, (err,user) =>{
+        console.log(user);
+        console.log(req.body.post._id);
+        if(user){
+            user.saved = user.saved.filter((s) =>{
+                return !(s.toString() == req.body.post._id.toString());
+            })
+            user.save();
+        }
+        res.status(200);
+    })
+});
 
 app.listen(3003,() => {
     console.log('listening on port 3003');

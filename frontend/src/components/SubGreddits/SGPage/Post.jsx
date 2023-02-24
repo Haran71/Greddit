@@ -56,7 +56,7 @@ function Post(props) {
 
                 <div className="tab-pane text-dark" id={comments}>
                     <textarea onChange={(e) =>{props.handleNewComment(e)}} className="my-4 mx-auto" rows="5" cols="30" value={props.comment}></textarea><br />
-                    <button onClick={() =>{props.handleComment(props.id)}} className="btn btn-outline-warning my-2 mx-auto">Add Comment</button>
+                    <button onClick={() =>{props.handleComment(props.id)}} disabled={!props.comment} className="btn btn-outline-warning my-2 mx-auto">Add Comment</button>
 
                     {props.info.comments?.map((comment) =>(
                         

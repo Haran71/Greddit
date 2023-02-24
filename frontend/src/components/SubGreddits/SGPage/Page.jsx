@@ -189,7 +189,7 @@ function Page(){
                     <div className="card bg-dark text-white w-50 text-center" styleName="border-radius: 1rem;">
                         <h2>Add your own post</h2>
                         <textarea className="my-4 mx-3" onChange={handleChange} rows="10" cols="70" value={newPost}></textarea>
-                        <button onClick={CreatePost} className="btn btn-outline-warning my-4 mx-auto">Create Post</button>
+                        <button disabled={!newPost} onClick={CreatePost} className="btn btn-outline-warning my-4 mx-auto">Create Post</button>
                     </div>
                 </div>
             </section> 

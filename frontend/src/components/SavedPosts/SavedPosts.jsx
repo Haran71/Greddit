@@ -127,6 +127,21 @@ function SavedPosts(){
         setSaved([]);
     }
 
+    function UnSave(post){
+        let p_obj = {
+            tokenH:cookies.GredditToken,
+            id:cookies.GredditUser,
+            username:cookies.GredditUser,
+            post:post
+        }
+
+        axios.post("http://localhost:3003/unsave",p_obj).then((response) =>{
+            console.log(response);
+        })
+
+        setSaved([]);
+    }
+
 
 
 
@@ -170,7 +185,10 @@ function SavedPosts(){
                 <div className="row d-flex justify-content-center align-items-center h-100 mt-4 mb-4">
                     <div className="card bg-dark text-white w-50 text-center" styleName="border-radius: 1rem;">
                         {saved.map((post,idx) =>(
-                            <Post info={post} key={idx} id={idx} handleLikes = {handleLikes} handleComment={handleComment} handleNewComment = {handleNewComment} comment={comment} report={report}  handleNewReport={handleNewReport} handleReport={handleReport} handleFollow={handleFollow} handleSave={handleSave}/>
+                            <div key={idx}>
+                            <Post info={post} id={idx} handleLikes = {handleLikes} handleComment={handleComment} handleNewComment = {handleNewComment} comment={comment} report={report}  handleNewReport={handleNewReport} handleReport={handleReport} handleFollow={handleFollow} handleSave={handleSave}/>
+                            <button onClick ={() =>{UnSave(post)}} className="btn btn-lg btn-outline-danger my-2 mx-auto">Unsave Post</button>
+                            </div>
                         ))}
                     </div>
                 </div>
