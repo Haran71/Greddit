@@ -2,7 +2,7 @@
 
 ## How to run
 
-To run the dockerized app, run the command `DOCKER_BUILDKIT=0 docker-compose up --build`. If you want to run the app without the dockerization, set up two terminals, at the frontend and backend directory respectively and run the `npm start` command in both.
+To run the dockerized app, run the command `DOCKER_BUILDKIT=0 docker-compose up --build`, and then got to localhost:8080 in chrome. If you want to run the app without the dockerization, set up two terminals, at the frontend and backend directory respectively and run the `npm i` command followed by the `npm start` command in both.
 
 ## Design Choices Made
 
@@ -12,7 +12,7 @@ To run the dockerized app, run the command `DOCKER_BUILDKIT=0 docker-compose up 
 
 3. When searching for subgreddits through tags, in order for a a subgreddit to show up all the specified tags must be a part of the tags of the subgreddit.
    
-4. When is a report is taken action with the blocked action, the report is removed.
+4. When a report is taken action against with the blocked action, the report is removed.
 
 ## Bonuses Done
 
